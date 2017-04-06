@@ -47,7 +47,13 @@ $(document).on("turbolinks:load", function() {
         processData: false,
         data: form_data,
         method: form.attr("method"),
-        dataType: "script"
+        dataType: "json",
+        success: function(response) {
+          //console.log(response)
+          var $img = $("<img/>", {src: response.image_url, width: 400});
+          var $div = $("<div/>").append($img);
+          $("#photos").append($div);
+        }
       });
 
     }
